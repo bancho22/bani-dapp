@@ -1,17 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import detectEthereumProvider from '@metamask/detect-provider'
+import { BrowserProvider } from 'ethers'
 import App from './App.jsx'
 import './index.css'
 
-const provider = await detectEthereumProvider()
+const provider = new BrowserProvider(window.ethereum)
 
-if (provider && provider === window.ethereum) {
-  // listen for changes to the chain, reload if any
-  provider.on('chainChanged', () => {
-    window.location.reload()
-  })
-
+if (provider) {
   // render dapp
   ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>

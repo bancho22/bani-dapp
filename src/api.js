@@ -1,9 +1,9 @@
 const getAccount = async ({provider}) => {
-  return await provider.request({ method: 'eth_requestAccounts' })
+  return await provider.send('eth_requestAccounts', [])
 }
 
 const getBalance = async ({provider, account}) => {
-  return await provider.request({ method: 'eth_getBalance', params: [account] })
+  return await provider.getBalance(account);
 }
 
 export { getAccount, getBalance }
