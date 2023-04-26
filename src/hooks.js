@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { getAccount } from './api'
+import { getAccount, getBalance } from './api'
 
 const useAccount = ({provider}) => {
   const [isLoadingAccount, setAccountLoading] = useState(false)
@@ -29,4 +29,18 @@ const useAccount = ({provider}) => {
   }
 }
 
-export { useAccount }
+const useBalance = ({provider, account}) => {
+  const [balance, setBalance] = useState('')
+
+  useEffect(() => {
+    if (account) {
+      getBalance({provider, account})
+        .then(balanceHex => setBalance(parseInt(balanceHex, 16)))
+        .catch(console.error)
+    }
+  }, [account, provider])
+
+  return { balance }
+}
+
+export { useAccount, useBalance }

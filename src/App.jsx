@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import { useAccount } from './hooks';
+import { useAccount, useBalance } from './hooks'
 import './App.css'
 
 function App({ provider }) {
@@ -8,6 +8,8 @@ function App({ provider }) {
     isLoadingAccount,
     loadAccount
   } = useAccount({provider})
+
+  const { balance } = useBalance({provider, account})
 
   return (
     <>
@@ -18,7 +20,10 @@ function App({ provider }) {
         </button>
         <p>Chain ID: {provider.chainId || 'none'}</p>
         {account && (
-          <p>Account connected: {account}</p>
+          <>
+            <p>Account connected: {account}</p>
+            <p>Balance: {balance}</p>
+          </>
         )}
       </div>
     </>
