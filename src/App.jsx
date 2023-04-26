@@ -17,9 +17,13 @@ function App({ provider }) {
     <>
       <h1>Bani dapp</h1>
       <div className="card">
-        <button onClick={() => !isLoadingAccount && loadAccount()}>
-          Connect account
-        </button>
+        {!account ? (
+          <button onClick={() => !isLoadingAccount && loadAccount()}>
+            Connect account
+          </button>
+        ) : (
+          <h3>Account connected!</h3>
+        )}
         <p>Chain ID: {chainId || 'none'}</p>
         <p>Network name: {networkName}</p>
         {account && (
