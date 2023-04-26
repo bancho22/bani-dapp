@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { formatEther } from 'ethers'
 import { getNetwork, getAccount, getBalance } from './api'
 
 const useNetwork = ({provider}) => {
@@ -51,7 +52,7 @@ const useBalance = ({provider, account}) => {
   useEffect(() => {
     if (account) {
       getBalance({provider, account})
-        .then(balanceHex => setBalance(parseInt(balanceHex, 16)))
+        .then(balance => setBalance(formatEther(balance)))
         .catch(console.error)
     }
   }, [account, provider])
