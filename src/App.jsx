@@ -18,7 +18,7 @@ function App({ provider }) {
         <button onClick={() => !isLoadingAccount && loadAccount()}>
           Connect account
         </button>
-        <p>Chain ID: {provider.chainId || 'none'}</p>
+        <p>Chain ID: {parseInt(provider.chainId, 16) || 'none'}</p>
         {account && (
           <>
             <p>Account connected: {account}</p>
