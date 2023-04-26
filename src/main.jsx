@@ -7,6 +7,11 @@ import './index.css'
 const provider = new BrowserProvider(window.ethereum)
 
 if (provider) {
+  // listen for changes to the chain, reload if any
+  window.ethereum.on('chainChanged', () => {
+    window.location.reload()
+  })
+
   // render dapp
   ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
