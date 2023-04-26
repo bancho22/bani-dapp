@@ -1,5 +1,22 @@
 import { useState, useEffect } from 'react'
-import { getAccount, getBalance } from './api'
+import { formatEther } from 'ethers'
+import { getNetwork, getAccount, getBalance } from './api'
+
+const useNetwork = ({provider}) => {
+  const [chainId, setChainId] = useState('')
+  const [name, setName] = useState('')
+
+  useEffect(() => {
+    getNetwork({provider})
+      .then(({chainId, name}) => {
+        setChainId(chainId.toString())
+        setName(name)
+      })
+      .catch(console.error)
+  }, [provider])
+
+  return { chainId, networkName: name }
+}
 
 const useAccount = ({provider}) => {
   const [isLoadingAccount, setAccountLoading] = useState(false)
@@ -35,7 +52,7 @@ const useBalance = ({provider, account}) => {
   useEffect(() => {
     if (account) {
       getBalance({provider, account})
-        .then(balanceHex => setBalance(parseInt(balanceHex, 16)))
+        .then(balance => setBalance(formatEther(balance)))
         .catch(console.error)
     }
   }, [account, provider])
@@ -43,4 +60,4 @@ const useBalance = ({provider, account}) => {
   return { balance }
 }
 
-export { useAccount, useBalance }
+export { useNetwork, useAccount, useBalance }

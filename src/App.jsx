@@ -1,8 +1,10 @@
 import PropTypes from 'prop-types'
-import { useAccount, useBalance } from './hooks'
+import { useNetwork, useAccount, useBalance } from './hooks'
 import './App.css'
 
 function App({ provider }) {
+  const { chainId, networkName } = useNetwork({provider})
+
   const {
     account,
     isLoadingAccount,
@@ -15,10 +17,15 @@ function App({ provider }) {
     <>
       <h1>Bani dapp</h1>
       <div className="card">
-        <button onClick={() => !isLoadingAccount && loadAccount()}>
-          Connect account
-        </button>
-        <p>Chain ID: {parseInt(provider.chainId, 16) || 'none'}</p>
+        {!account ? (
+          <button onClick={() => !isLoadingAccount && loadAccount()}>
+            Connect account
+          </button>
+        ) : (
+          <h3>Account connected!</h3>
+        )}
+        <p>Chain ID: {chainId || 'none'}</p>
+        <p>Network name: {networkName}</p>
         {account && (
           <>
             <p>Account connected: {account}</p>
