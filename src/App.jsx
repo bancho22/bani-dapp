@@ -12,27 +12,58 @@ function App({ provider }) {
   const { balance: nexoBalance } = useNexoBalance({ provider, account });
 
   return (
-    <>
-      <h1>Bani dapp</h1>
-      <div className="card">
-        {!account ? (
-          <button onClick={() => !isLoadingAccount && loadAccount()}>
-            Connect account
-          </button>
-        ) : (
-          <h3>Account connected!</h3>
-        )}
-        <p>Chain ID: {chainId || "none"}</p>
-        <p>Network name: {networkName}</p>
-        {account && (
-          <>
-            <p>Account: {account}</p>
-            <p>ETH Balance: {ethBalance}</p>
-            <p>NEXO Balance: {nexoBalance}</p>
-          </>
-        )}
+    <div className="app">
+      <div className="appHeader">Bani dapp</div>
+      <div className="appBody">
+        <div className="networkAndAccountCardsWrapper">
+          <div className="card networkCard">
+            <span className="cardHeader">Network Info</span>
+            <div className="cardBody">
+              <div className="labels">
+                <span>Chain ID</span>
+                <span>Name</span>
+              </div>
+              <div className="values">
+                <span>{chainId}</span>
+                <span>{networkName}</span>
+              </div>
+            </div>
+          </div>
+          <div className="card accountCard">
+            <span className="cardHeader">Account Info</span>
+              <div className="cardBody">
+                <div className="labels">
+                  <span>Address</span>
+                </div>
+                <div className="values">
+                  {account ? (
+                    <span>{account}</span>
+                  ) : (
+                    <button onClick={() => !isLoadingAccount && loadAccount()}>
+                      Connect account
+                    </button>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        <div className="balanceInfo">
+          <div className="card">
+            <span className="cardHeader">Balance</span>
+            <div className="cardBody">
+            <div className="labels">
+                  <span>ETH</span>
+                  <span>NEXO</span>
+                </div>
+                <div className="values">
+                <span>{ethBalance}</span>
+                <span>{nexoBalance}</span>
+                </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </>
+    </div>
   );
 }
 
