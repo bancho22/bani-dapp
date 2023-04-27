@@ -1,17 +1,15 @@
-import PropTypes from 'prop-types'
-import { useNetwork, useAccount, useBalance } from './hooks'
-import './App.css'
+import PropTypes from "prop-types";
+import { useNetwork, useAccount, useEthBalance, useNexoBalance } from "./hooks";
+import "./App.css";
 
 function App({ provider }) {
-  const { chainId, networkName } = useNetwork({provider})
+  const { chainId, networkName } = useNetwork({ provider });
 
-  const {
-    account,
-    isLoadingAccount,
-    loadAccount
-  } = useAccount({provider})
+  const { account, isLoadingAccount, loadAccount } = useAccount({ provider });
 
-  const { balance } = useBalance({provider, account})
+  const { balance: ethBalance } = useEthBalance({ provider, account });
+
+  const { balance: nexoBalance } = useNexoBalance({ provider, account });
 
   return (
     <>
@@ -24,21 +22,22 @@ function App({ provider }) {
         ) : (
           <h3>Account connected!</h3>
         )}
-        <p>Chain ID: {chainId || 'none'}</p>
+        <p>Chain ID: {chainId || "none"}</p>
         <p>Network name: {networkName}</p>
         {account && (
           <>
-            <p>Account connected: {account}</p>
-            <p>Balance: {balance}</p>
+            <p>Account: {account}</p>
+            <p>ETH Balance: {ethBalance}</p>
+            <p>NEXO Balance: {nexoBalance}</p>
           </>
         )}
       </div>
     </>
-  )
+  );
 }
 
 App.propTypes = {
-  provider: PropTypes.object
-}
+  provider: PropTypes.object,
+};
 
-export default App
+export default App;
