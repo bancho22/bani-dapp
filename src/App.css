@@ -55,6 +55,11 @@
   width: 50%;
 }
 
+.balanceCard {
+  width: 90%;
+  align-self: center;
+}
+
 .cardHeader {
   display: flex;
   font-weight: bold;
@@ -64,7 +69,6 @@
 
 .cardBody {
   display: flex;
-  align-items: center;
 }
 
 .cardBody div {
@@ -82,4 +86,9 @@
   align-items: center;
   flex-grow: 1;
   font-weight: bold;
+}
+
+.balanceInfo {
+  display: flex;
+  justify-content: center;
 }

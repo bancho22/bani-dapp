@@ -48,7 +48,7 @@ function App({ provider }) {
             </div>
           </div>
         <div className="balanceInfo">
-          <div className="card">
+          <div className="card balanceCard">
             <span className="cardHeader">Balance</span>
             <div className="cardBody">
             <div className="labels">
