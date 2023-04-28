@@ -4,18 +4,20 @@ import Card from "./Card";
 function AccountCard({ account, isLoadingAccount, loadAccount }) {
   return (
     <Card className="accountCard" header="Account Info">
-      <div className="labels">
-        <span>Address</span>
-      </div>
-      <div className="values">
-        {account ? (
-          <span>{account}</span>
-        ) : (
-          <button onClick={() => !isLoadingAccount && loadAccount()}>
-            Connect account
-          </button>
-        )}
-      </div>
+      {account ? (
+        <>
+          <div className="labels">
+            <span>Address</span>
+          </div>
+          <div className="values">
+            <span>{account}</span>
+          </div>
+        </>
+      ) : (
+        <button onClick={() => !isLoadingAccount && loadAccount()}>
+          Connect account
+        </button>
+      )}
     </Card>
   );
 }
