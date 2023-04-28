@@ -41,7 +41,7 @@
 }
 
 .cardBody .values {
-  align-items: center;
+  align-items: end;
   flex-grow: 1;
   font-weight: bold;
 }
