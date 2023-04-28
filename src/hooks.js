@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { formatEther } from "ethers";
-import { getNetwork, getAccount, getEthBalance, getNexoBalance } from "./api";
+import { getNetwork, getAccount, getEthBalance, getTokenData } from "./api";
+import { tokens as tokenAddresses } from './data';
 
 const useNetwork = ({ provider }) => {
   const [chainId, setChainId] = useState("");
@@ -52,7 +52,7 @@ const useEthBalance = ({ provider, account }) => {
   useEffect(() => {
     if (account) {
       getEthBalance({ provider, account })
-        .then((balance) => setBalance(formatEther(balance)))
+        .then((balance) => setBalance(balance))
         .catch(console.error);
     }
   }, [account, provider]);
@@ -60,18 +60,18 @@ const useEthBalance = ({ provider, account }) => {
   return { balance };
 };
 
-const useNexoBalance = ({ provider, account }) => {
-  const [balance, setBalance] = useState("");
+const useTokenData = ({ provider, account }) => {
+  const [tokens, setTokens] = useState([]);
 
   useEffect(() => {
     if (account) {
-      getNexoBalance({ provider, account })
-        .then((balance) => setBalance(formatEther(balance)))
+      Promise.all(tokenAddresses.map(token => getTokenData({provider, account, token})))
+        .then(tokens => setTokens(tokens))
         .catch(console.error);
     }
   }, [account, provider]);
 
-  return { balance };
+  return { tokens };
 }
 
-export { useNetwork, useAccount, useEthBalance, useNexoBalance }
+export { useNetwork, useAccount, useEthBalance, useTokenData }

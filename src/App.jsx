@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { AccountCard, BalanceCard, NetworkCard } from './components/card';
-import { useNetwork, useAccount, useEthBalance, useNexoBalance } from "./hooks";
+import { useNetwork, useAccount, useEthBalance, useTokenData } from "./hooks";
 import "./App.css";
 
 function App({ provider }) {
@@ -10,7 +10,8 @@ function App({ provider }) {
 
   const { balance: ethBalance } = useEthBalance({ provider, account });
 
-  const { balance: nexoBalance } = useNexoBalance({ provider, account });
+  const { tokens } = useTokenData({ provider, account });
+  console.log({tokens});
 
   return (
     <div className="app">
@@ -30,7 +31,7 @@ function App({ provider }) {
         <div className="balanceInfo">
           <BalanceCard
             ethBalance={ethBalance}
-            nexoBalance={nexoBalance}
+            nexoBalance="0"
           />
         </div>
       </div>
