@@ -1,7 +1,5 @@
 import PropTypes from "prop-types";
-import NetworkCard from './components/NetworkCard';
-import AccountCard from './components/AccountCard';
-import BalanceCard from './components/BalanceCard';
+import { AccountCard, BalanceCard, NetworkCard } from './components/card';
 import { useNetwork, useAccount, useEthBalance, useNexoBalance } from "./hooks";
 import "./App.css";
 
