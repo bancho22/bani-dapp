@@ -1,0 +1,13 @@
+.accountCard {
+  width: 50%;
+}
+
+.accountCard.ready .cardBody {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.accountCard .cardBody .bold {
+  font-weight: bold;
+}

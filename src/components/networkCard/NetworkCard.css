@@ -1,0 +1,20 @@
+.networkCard {
+  width: 30%;
+}
+
+.cardBody .labels, .values {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 10px;
+}
+
+.cardBody .labels {
+  font-weight: 300;
+}
+
+.cardBody .values {
+  align-items: end;
+  flex-grow: 1;
+  font-weight: bold;
+}

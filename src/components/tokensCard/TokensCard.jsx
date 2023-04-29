@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
-import Card from "./Card";
+import Card from "../card/Card";
+import './TokensCard.css';
 
 function TokensCard({ tokens }) {
   return (

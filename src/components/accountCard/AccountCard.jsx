@@ -1,17 +1,17 @@
 import PropTypes from "prop-types";
-import Card from "./Card";
+import Card from "../card/Card";
+import "./AccountCard.css";
 
 function AccountCard({ account, isLoadingAccount, loadAccount }) {
   return (
-    <Card className="accountCard" header="Account Info">
+    <Card
+      className={`accountCard ${account.length > 0 ? "ready" : ""}`}
+      header="Account Info"
+    >
       {account ? (
         <>
-          <div className="labels">
-            <span>Address</span>
-          </div>
-          <div className="values">
-            <span>{account}</span>
-          </div>
+          <span>Address</span>
+          <span className="bold">{account}</span>
         </>
       ) : (
         <button onClick={() => !isLoadingAccount && loadAccount()}>

@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { AccountCard, NetworkCard, TokensCard } from "./components/card";
+import { AccountCard, NetworkCard, TokensCard } from "./components";
 import { useNetwork, useAccount, useEthBalance, useTokenData } from "./hooks";
 import { eth } from "./data";
 import "./App.css";
