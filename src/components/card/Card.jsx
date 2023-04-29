@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import WarningTooltip from "../tooltip/WarningTooltip";
 import "./Card.css";
 
 function Card({ className, header, children, warning }) {
@@ -6,7 +7,7 @@ function Card({ className, header, children, warning }) {
     <div className={`card ${className}`}>
       <div className="cardHeader">
         <span>{header}</span>
-        {warning && <div className="warning">!</div>}
+        {warning && <WarningTooltip content={warning} />}
       </div>
       <div className="cardBody">{children}</div>
     </div>
