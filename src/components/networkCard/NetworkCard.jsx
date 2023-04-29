@@ -7,7 +7,7 @@ function NetworkCard({ chainId, networkName, isMainnet }) {
     <Card
       className="networkCard"
       header="Network Info"
-      warning={!isMainnet ? "Not on mainnet. Consider switching network!" : ""}
+      warning={chainId && !isMainnet ? "Not on mainnet. Consider switching network!" : ""}
     >
       <div className="labels">
         <span>Chain ID</span>
