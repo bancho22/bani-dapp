@@ -44,10 +44,3 @@
   display: flex;
   justify-content: center;
 }
-
-.noApp {
-  position: absolute;
-  margin: auto;
-  width: 100%;
-  top: 20%;
-}
