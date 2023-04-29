@@ -26,7 +26,11 @@ function App({ provider }) {
       <div className="appHeader">Bani dapp</div>
       <div className="appBody">
         <div className="networkAndAccountCardsWrapper">
-          <NetworkCard chainId={chainId} networkName={networkName} />
+          <NetworkCard
+            chainId={chainId}
+            networkName={networkName}
+            isMainnet={chainId === "1"}
+          />
           <AccountCard
             account={account}
             isLoadingAccount={isLoadingAccount}
