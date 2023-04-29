@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { getNetwork, getAccount, getEthBalance, getTokenData } from "./api";
-import { tokens as tokenAddresses } from './data';
+import { tokens as tokenAddresses } from "./data";
 
 const useNetwork = ({ provider }) => {
   const [chainId, setChainId] = useState("");
@@ -65,13 +65,17 @@ const useTokenData = ({ provider, account }) => {
 
   useEffect(() => {
     if (account) {
-      Promise.all(tokenAddresses.map(token => getTokenData({provider, account, token})))
-        .then(tokens => setTokens(tokens))
+      Promise.all(
+        tokenAddresses.map((token) =>
+          getTokenData({ provider, account, token })
+        )
+      )
+        .then((tokens) => setTokens(tokens))
         .catch(console.error);
     }
   }, [account, provider]);
 
   return { tokens };
-}
+};
 
-export { useNetwork, useAccount, useEthBalance, useTokenData }
+export { useNetwork, useAccount, useEthBalance, useTokenData };

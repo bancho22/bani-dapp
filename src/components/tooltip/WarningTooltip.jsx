@@ -2,11 +2,11 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 import "./WarningTooltip.css";
 
-const WARNING_SIGN = '!';
+const WARNING_SIGN = "!";
 
 function WarningTooltip({ content }) {
   const [isOpen, setIsOpen] = useState(false);
-  console.log(isOpen)
+
   return (
     <div className="tooltipRoot">
       <div
@@ -16,7 +16,9 @@ function WarningTooltip({ content }) {
       >
         {WARNING_SIGN}
       </div>
-      <div className={`tooltipContent ${isOpen ? "opened" : ""}`}>{content}</div>
+      <div className={`tooltipContent ${isOpen ? "opened" : ""}`}>
+        {content}
+      </div>
     </div>
   );
 }
