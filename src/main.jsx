@@ -8,7 +8,7 @@ const provider = new BrowserProvider(window.ethereum);
 
 if (provider) {
   // listen for changes to the chain, reload if any
-  window.ethereum.on("chainChanged", () => {
+  window.ethereum?.on("chainChanged", () => {
     window.location.reload();
   });
 }
