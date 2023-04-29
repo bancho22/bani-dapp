@@ -17,18 +17,23 @@ const getEthBalance = async ({ provider, account }) => {
 const getTokenData = async ({ provider, account, token }) => {
   const contract = new Contract(token, abi, provider);
 
-  const name = await contract.name();
-  const symbol = await contract.symbol();
-  const decimals = await contract.decimals();
-  const totalSupply = await contract.totalSupply();
-  const balance = await contract.balanceOf(account);
+  try {
+    const name = await contract.name();
+    const symbol = await contract.symbol();
+    const decimals = await contract.decimals();
+    const totalSupply = await contract.totalSupply();
+    const balance = await contract.balanceOf(account);
 
-  return {
-    name,
-    symbol,
-    decimals: decimals.toString(),
-    totalSupply: totalSupply.toLocaleString(),
-    balance: formatEther(balance),
+    return {
+      name,
+      symbol,
+      decimals: decimals.toString(),
+      totalSupply: totalSupply.toLocaleString(),
+      balance: formatEther(balance),
+    };
+  } catch (error) {
+    console.error(error);
+    return {};
   }
 };
 

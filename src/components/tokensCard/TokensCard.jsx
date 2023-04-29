@@ -5,7 +5,7 @@ import "./TokensCard.css";
 function TokensCard({ tokens }) {
   return (
     <Card className="tokensCard" header="My Tokens">
-      {tokens.length > 1 ? (
+      {tokens.length > 0 ? (
         <table>
           <thead>
             <tr>

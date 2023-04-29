@@ -14,12 +14,14 @@ function App({ provider }) {
   const { tokens: otherTokens } = useTokenData({ provider, account });
 
   const tokens = [
-    {
-      balance: ethBalance,
-      ...eth,
-    },
+    ethBalance
+      ? {
+          balance: ethBalance,
+          ...eth,
+        }
+      : {},
     ...otherTokens,
-  ];
+  ].filter((token) => Object.keys(token).length > 0);
 
   return (
     <div className="app">
