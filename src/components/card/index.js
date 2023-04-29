@@ -1,5 +1,5 @@
 import AccountCard from './AccountCard';
-import BalanceCard from './BalanceCard';
 import NetworkCard from './NetworkCard';
+import TokensCard from './TokensCard';
 
-export { AccountCard, BalanceCard, NetworkCard };
+export { AccountCard, NetworkCard, TokensCard };

@@ -13,7 +13,7 @@
   width: 50%;
 }
 
-.balanceCard {
+.tokensCard {
   width: 90%;
   align-self: center;
 }
@@ -27,9 +27,10 @@
 
 .cardBody {
   display: flex;
+  justify-content: center;
 }
 
-.cardBody div {
+.cardBody .labels, .values {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -44,4 +45,32 @@
   align-items: end;
   flex-grow: 1;
   font-weight: bold;
+}
+
+.cardBody table {
+  width: 100%;
+  text-align: left;
+  padding: 20px;
+}
+
+.cardBody thead td {
+  font-weight: 500;
+  padding-bottom: 10px;
+}
+
+.cardBody tbody td {
+  font-weight: 300;
+}
+
+.cardBody thead .totalSupplyCol {
+  text-align: center;
+}
+
+.cardBody tbody .totalSupplyCol {
+  width: 20%;
+  text-align: end;
+}
+
+.cardBody .tokenTablePlaceholder {
+  padding: 20px;
 }

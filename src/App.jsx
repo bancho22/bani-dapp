@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
-import { AccountCard, BalanceCard, NetworkCard } from './components/card';
+import { AccountCard, NetworkCard, TokensCard } from "./components/card";
 import { useNetwork, useAccount, useEthBalance, useTokenData } from "./hooks";
+import { eth } from "./data";
 import "./App.css";
 
 function App({ provider }) {
@@ -10,29 +11,30 @@ function App({ provider }) {
 
   const { balance: ethBalance } = useEthBalance({ provider, account });
 
-  const { tokens } = useTokenData({ provider, account });
-  console.log({tokens});
+  const { tokens: otherTokens } = useTokenData({ provider, account });
+
+  const tokens = [
+    {
+      balance: ethBalance,
+      ...eth,
+    },
+    ...otherTokens,
+  ];
 
   return (
     <div className="app">
       <div className="appHeader">Bani dapp</div>
       <div className="appBody">
         <div className="networkAndAccountCardsWrapper">
-          <NetworkCard
-            chainId={chainId}
-            networkName={networkName}
-          />
+          <NetworkCard chainId={chainId} networkName={networkName} />
           <AccountCard
             account={account}
             isLoadingAccount={isLoadingAccount}
             loadAccount={loadAccount}
           />
-          </div>
-        <div className="balanceInfo">
-          <BalanceCard
-            ethBalance={ethBalance}
-            nexoBalance="0"
-          />
+        </div>
+        <div className="tokensCardWrapper">
+          <TokensCard tokens={tokens} />
         </div>
       </div>
     </div>

@@ -26,8 +26,8 @@ const getTokenData = async ({ provider, account, token }) => {
   return {
     name,
     symbol,
-    decimals,
-    totalSupply: formatEther(totalSupply),
+    decimals: decimals.toString(),
+    totalSupply: totalSupply.toLocaleString(),
     balance: formatEther(balance),
   }
 };
