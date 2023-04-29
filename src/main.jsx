@@ -11,15 +11,11 @@ if (provider) {
   window.ethereum.on("chainChanged", () => {
     window.location.reload();
   });
-
-  // render dapp
-  ReactDOM.createRoot(document.getElementById("root")).render(
-    <React.StrictMode>
-      <App provider={provider} />
-    </React.StrictMode>
-  );
-} else {
-  console.log(
-    "Please install MetaMask or check whether you have the correct wallet selected."
-  );
 }
+
+// render dapp
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <App provider={provider} />
+  </React.StrictMode>
+);

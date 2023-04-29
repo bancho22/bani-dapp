@@ -23,7 +23,7 @@ function App({ provider }) {
     ...otherTokens,
   ].filter((token) => Object.keys(token).length > 0);
 
-  return (
+  return provider ? (
     <div className="app">
       <div className="appHeader">Bani dapp</div>
       <div className="appBody">
@@ -44,6 +44,11 @@ function App({ provider }) {
         </div>
       </div>
     </div>
+  ) : (
+    <h1 className="noApp">
+      Please install MetaMask or check whether you have the correct wallet
+      selected.
+    </h1>
   );
 }
 
